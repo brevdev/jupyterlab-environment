@@ -1,34 +1,56 @@
-run jupyter notebook
+## Quickstart 
 
-```
-docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "/home/brev/workspace/AreYouARobot/work":/home/jovyan/work jupyter/scipy-notebook:lab-3.4.3
-```
+run brev start on this repo to create a jupyterlab-environment 
 
-and copy the link from output into your browser
-
+```sh
+$ brev start https://github.com/brevdev/jupyterlab-environment
 ```
 
-    To access the server, open this file in a browser:
-        file:///home/jovyan/.local/share/jupyter/runtime/jpserver-72-open.html
-    Or copy and paste one of these URLs:
-        http://cc3497583ba8:8888/lab?token=115cb362e7f31df359a03ddc01b0e8e120d08e0375e1f97d
-     or http://127.0.0.1:8888/lab?token=115cb362e7f31df359a03ddc01b0e8e120d08e0375e1f97d # <----- copy this one!
+which has an output similar to 
+```
+Name flag omitted, using auto generated name: jupyterlab-environment
+Workspace is starting. This can take up to 2 minutes the first time.
+
+name jupyterlab-environment
+template 4nbb4lg2s ubuntu
+resource class 2x8
+workspace group brev-test-brevtenant-cluster
+You can safely ctrl+c to exit
+⣽  workspace is deploying
 ```
 
-generate function text
 
-```
-python gentext.py
-```
+port forward your environment to localhost with
 
-generate function names to copy into `all_strategies` array
-
-```
-python genfuncs.py
+```sh
+$ brev port-forward jupyterlab-environment -p 8888:8888
 ```
 
-generate function names to copy into `all_strategies` array
+
+then navigate to [http://127.0.0.1:8888/lab?token=mysecretpassword](http://127.0.0.1:8888/lab?token=mysecretpassword)
+to access your environment.
+
+This page will sometimes take a while to load. 
+
+
+## View jupyter notebook logs 
+
+access the shell on your workspace with the `brev shell` commmand 
+
+```sh
+$ brev shell jupyterlab-environment 
+...
+➜  jupyterlab-environment git:(main) ✗ 
+```
+
+then print the logs using `docker logs`
 
 ```
-python genfuncs_reduced.py
+➜ docker logs jupyterlab
+```
+
+to follow log output add the `-f` flag
+
+```
+➜ docker logs -f jupyterlab
 ```

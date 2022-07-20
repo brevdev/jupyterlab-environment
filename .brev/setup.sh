@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -eo pipefail
-
+docker run --rm -d --name jupyterlab -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -e JUPYTER_TOKEN="mysecretpassword" -v "/home/brev/workspace/jupyterlab-environment/work":/home/jovyan/work jupyter/tensorflow-notebook:lab-3.4.3
 
 
 ####################################################################################

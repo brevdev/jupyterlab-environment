@@ -1,3 +1,6 @@
+
+Welcome! everything inside of the `work` directory will be preserved, but files created outside this directory will be lost when the server resets. Enjoy using our environment and reach out to our discord for support https://discord.com/invite/qV6CsUjnZ2
+
 ## Quickstart 
 
 run brev start on this repo to create a jupyterlab-environment 
